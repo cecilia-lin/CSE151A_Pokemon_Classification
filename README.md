@@ -22,7 +22,7 @@
 - Train/Val/Test splits/Cross-validation
   - This step sets up the data for model training.
 - Data Augmentation 
-- Flattening the Image (Logistic Regression)
+
 
 Later steps:
 ## Model Training
