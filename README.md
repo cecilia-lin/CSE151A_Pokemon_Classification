@@ -1,7 +1,7 @@
 # CSE151A_Pokemon_Classification
 
 
-## Milestone2(EDA):[Milestone2.ipynb](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/blob/main/Milestone2.ipynb)
+## Milestone2(EDA):[Milestone2.ipynb](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/blob/Milestone2/notebook.ipynb)
 - Observe 'bad data' and 'incorrectly formatted data'
 - Bar Graph on the frequency of each class, winged and not winged
 - Plot example classes of winged and not winged images
