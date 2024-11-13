@@ -15,14 +15,18 @@
 - Case study on background diversity 
 - Case study on different “types” of visual representations of the pokemon
 
-## Milestone3(Data Preprocessing):
+## Milestone3(Data Preprocessing):[Milestone3.ipynb](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/blob/main/Milestone3.ipynb)
+<a target="_blank" href="https://colab.research.google.com/github/cecilia-lin/CSE151A_Pokemon_Classification">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 - Drop bad data in dataset
   - Bad data refers to pokemon characters who are wingless species that have features that is similar to wings. We do so to avoid confusion for black box training to improve model performance.
 - Make a csv file that maps pokemon name to (winged or not winged)
   - Since the original data is not labeled, we need to manually label the data to perform supervised classification.
 - Resize the images to (224 x 224)
   - From Milestone2, we learned that the images vary in dimensions. Thus, we should resize the images to ensure consistency in input size since we are considering to use Convolutional Neural Network (CNN).
-- Grayscale the images
+- Grayscale the images **(Got feedback that colors do matter)**
   - Since color is not an attribute that contributes to winged or not winged, we can grayscale the images to reduce complexity and noise in the data.
 - Normalize the pixel values
   - We might be using gradient descent to find optimal weight for features. If pixel values are in different ranges, it can lead to longer training times and difficulty to converge.
@@ -35,18 +39,16 @@
   - This step sets up the data for model training.
 - Data Augmentation 
 
-
-
-
-
-
-## Later steps:
 ## Model Training
+
 ### Traditional ML
-#### KNN
-#### SVM
-#### Random Forest
+#### Logistic Regression
 #### Naive Bayes
+#### SVM
+#### KNN
+#### Random Forest
+
+
 ### CNN
 - Experiment with architecture (ResNet-18, ResNet-54)
 - Experiment with Optimizers (Adam, RMSProp, AMSGrad)
