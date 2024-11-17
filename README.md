@@ -57,7 +57,6 @@
 
 #### KNN
 
-It seems that all of the above models are underfitting so we decided to try deep learning models.
 
 ### DL Models
 
