@@ -26,11 +26,12 @@
   - Since the original data is not labeled, we need to manually label the data to perform supervised classification.
 - Resize the images to (224 x 224)
   - From Milestone2, we learned that the images vary in dimensions. Thus, we should resize the images to ensure consistency in input size since we are considering to use Convolutional Neural Network (CNN).
-- Grayscale the images **(Got feedback that colors do matter)**
+- Grayscale the images **(Got feedback that colors do matter, so we converted them to RGB)**
   - Since color is not an attribute that contributes to winged or not winged, we can grayscale the images to reduce complexity and noise in the data.
 - Normalize the pixel values
   - We might be using gradient descent to find optimal weight for features. If pixel values are in different ranges, it can lead to longer training times and difficulty to converge.
   - Also, normalization can reduce the effect of different backgrounds of the images on feature extraction.
+  - We wrote separate functions for Zscore and Minmax to facilitate the subsequent application of different normalization methods to different models.
 - Data balancing
   - sample equal number of images from both sets
   - or
@@ -38,18 +39,37 @@
 - Train/Val/Test splits/Cross-validation
   - This step sets up the data for model training.
 - Data Augmentation 
+  - We use functions from the Image library to implement flip/rotate/shift changes to images and integrate these actions into a function.
 
 ## Model Training
+**_Where does your model fit in the fitting graph? And What are the next models you are thinking of and why?_**
 
-### Traditional ML
+
+**_Please make sure preprocessing is complete and your first model has been trained. If you are doing supervised learning include example ground truth and predictions for train, validation and test._** 
+
+### ML Models
+
 #### Logistic Regression
+
 #### Naive Bayes
+
 #### SVM
+
 #### KNN
-#### Random Forest
+
+It seems that all of the above models are underfitting so we decided to try deep learning models.
+
+### DL Models
+
+#### CNN
+
+- Experiment with Optimizers (Adam, RMSProp, AMSGrad)
+- Experiment with batch size (32, 64)
+- Experiment with Epochs (25, 50)
 
 
-### CNN
+#### ResNet-18
+
 - Experiment with architecture (ResNet-18, ResNet-54)
 - Experiment with Optimizers (Adam, RMSProp, AMSGrad)
 - Experiment with batch size (32, 64)
