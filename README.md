@@ -20,9 +20,9 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-- Drop bad data in dataset
+- Data Cleaning: Drop bad data in dataset
   - Bad data refers to pokemon characters who are wingless species that have features that is similar to wings. We do so to avoid confusion for black box training to improve model performance.
-- Make a csv file that maps pokemon name to (winged or not winged)
+- Labeling: Make a csv file that maps pokemon name to (winged or not winged)
   - Since the original data is not labeled, we need to manually label the data to perform supervised classification.
 - Resize the images to (224 x 224)
   - From Milestone2, we learned that the images vary in dimensions. Thus, we should resize the images to ensure consistency in input size since we are considering to use Convolutional Neural Network (CNN).
@@ -47,18 +47,14 @@
 
 **_Please make sure preprocessing is complete and your first model has been trained. If you are doing supervised learning include example ground truth and predictions for train, validation and test._** 
 
-### ML Models
+### ML Models we trained on
 
-#### Logistic Regression
+- **Logistic Regression**
+- **Support Vector Machine (SVM)**
+- **K-Nearest Neighbors (KNN)**
+- **Naive Bayes**
 
-#### Naive Bayes
-
-#### SVM
-
-#### KNN
-
-
-### DL Models
+### DL Models we are thinking of
 
 #### CNN
 
