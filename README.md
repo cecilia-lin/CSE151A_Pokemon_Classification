@@ -41,6 +41,13 @@
 - Data Augmentation 
   - We use functions from the Image library to implement flip/rotate/shift changes to images and integrate these actions into a function.
 
+### Conclusion & next step
+
+To classify if a pokemon is winged or not, we first built a logistic regression model without tuning any parameters. The logistic regression model is highly overfitted to the training data that it has a lower accuracy for testing and validation data. When we compare it to a model that predicts randomly, it has lower accuracy than the model. Thus, we moved on to build a SVM model to see if it will be a more generalized model. SVM is more robust to outliers. The performance of SVM measured by validation accuracy increased 0.54 to 0.77. Something we can do to improve would be tuning the parameters of the model to find the sweet spot between complexity and accuracy. 
+
+Next, we will be building a KNN model which is non-parametric. It does not have a training phase, so we can save on runtime and do not need to worry about hyperparameter tuning for the model. 
+
+
 ## Model Training
 **_Where does your model fit in the fitting graph? And What are the next models you are thinking of and why?_**
 
