@@ -50,7 +50,9 @@ Next, we will be building a KNN model which is non-parametric. It does not have 
 ## Milestone4(Data Preprocessing):[Milestone4.ipynb](create link)
 - Tune hyperparameters for machine learning models
 - Train K-Nearest Neighbors (KNN) model as second model
-
+  
+### Conclusion & next step
+The KNN model has a test accuracy of 0.66, and it does not perform as good as the SVM model, which has a test accuracy of 0.79. One way we could ultilize to improve our KNN model is to adjust the training size to prevent overfitting. We also revisted our work in building the first model of Logistic Regression and SVM to apply regularization. Regularization prevents our model from overfitting to the training dataset, allowing our model to generalize. The next model we are thinking of is Naive Bayes classifer, because it is reasonable to assume the input features, such as background or shape, are conditionally independent of each other given the pokemon is winged or not winged. 
 
 ### ML Models we trained on
 
