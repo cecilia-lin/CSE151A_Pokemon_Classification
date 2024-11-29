@@ -1,0 +1,11 @@
+jupyter nbconvert --to script notebook.ipynb
+
+nohup python notebook.py > output.log 2>&1 &
+
+ps -p balabala
+
+
+
+kill -9 balalbala
+
+dmesg | grep -i 'killed'
