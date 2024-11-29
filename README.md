@@ -47,12 +47,10 @@ To classify if a pokemon is winged or not, we first built a logistic regression 
 
 Next, we will be building a KNN model which is non-parametric. It does not have a training phase, so we can save on runtime and do not need to worry about hyperparameter tuning for the model. 
 
+## Milestone4(Data Preprocessing):[Milestone4.ipynb](create link)
+- Tune hyperparameters for machine learning models
+- Train K-Nearest Neighbors (KNN) model as second model
 
-## Model Training
-**_Where does your model fit in the fitting graph? And What are the next models you are thinking of and why?_**
-
-
-**_Please make sure preprocessing is complete and your first model has been trained. If you are doing supervised learning include example ground truth and predictions for train, validation and test._** 
 
 ### ML Models we trained on
 
