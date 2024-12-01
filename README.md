@@ -57,7 +57,7 @@ Next, we will be building a KNN model which is non-parametric. It does not have 
 - Train K-Nearest Neighbors (KNN) model as second model
   
 ### Conclusion & next step
-The KNN model has a test accuracy of 0.66, and it does not perform as good as the SVM model, which has a test accuracy of 0.79. One way we could ultilize to improve our KNN model is to adjust the training size to prevent overfitting. We also revisted our work in building the first model of Logistic Regression and SVM to apply regularization. Regularization prevents our model from overfitting to the training dataset, allowing our model to generalize. The next model we are thinking of is deep learning models, such as CNN and ResNet-18, because the traditional ML models we built so far do not perform with an accuracy above 0.80. We would ultize deep learning methods for higher accuracy and more efficient feature extraction. 
+The KNN model has a test accuracy of 0.66, and it does not perform as good as the SVM model, which has a test accuracy of 0.79. One way we could ultilize to improve our KNN model is to adjust the training size, early stopping, or increasing regularization to prevent overfitting. We also revisted our work in building the first model of Logistic Regression and SVM to apply regularization. Regularization prevents our model from overfitting to the training dataset, allowing our model to generalize. The next model we are thinking of is deep learning models, ResNet-18, because the traditional ML models we built so far do not perform with an accuracy above 0.80. We would ultize deep learning methods for higher accuracy and more efficient feature extraction.
 
 ### ML Models we trained on
 
