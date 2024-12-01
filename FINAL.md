@@ -38,15 +38,52 @@ Finally, methods to manipulate the dataset for use with our models were implemen
 
 ##### Logistic Regression
 
+The first model we decided to use was Logistic Regression. Logistic Regression is a supervised learning algorithm used for binary classification. Since Logistic Regression takes 1-dimensional inputs, the image data was flattened into a 1D vector in order to fit into our model.
+
+- max_iter('100'): This defines the maximum number of iterations taken for the solvers to converge. We chose a default value of 100.
+
+- solver('lbfgs'): This solving algorithm can handle large datasets and is the default sorting algorithm, which ended up being our choice as well. 
+
+- penalty('l2'): Our solving algorithm supports only L2 regularization or none. An L2 regulation was added to prevent overfitting and promote simpler models.
+
+
+- class_weight('balanced'): Even thought the input data for this model is randomly sampled and balanced during preprocessing, the 'balanced' option is chosen to automatically balance the weights of each class frequency.
+
+- C('best_C'): From testing, the best regularization is evaluated, and the best regularization complexity is chosen and added as a parameter into the model. 
+
 ##### SVM (Support Vector Machine)
+
+SVM is a supervised learning algorithm used for both classification and regression, though we use it in this project for regression. SVM works by finding the optimal decision boundary (hyperplane) between two classes in a feature space. This type of classification is effective for classification tasks like ours with high-dimensional spaces and noisy data.
+
+- kernel('rbf'): The RBF kernel is suitable for image data and can help distinguish subtle features in images, like shapes resembling wings.
+
+- C('best_C'): As stated before, the best regularization complexity was chosen through testing.
+
+- probability('True'): Probability estimates are enabled in order to provide a confidence score for each classification.
+
+- class_weight('balanced'): Even thought the input data for this model is randomly sampled and balanced during preprocessing, the 'balanced' option is chosen to automatically balance the weights of each class frequency.
 
 ##### K-Nearest Neighbors (KNN)
 
-##### Naive Bayes Regression
+K-Nearest Neighbors is an instance-based learning algorithm that sorts data points into classes based on the classes of its nearest neighbors in the feature space. KNN is able to classify a Pokemon as winged or not-winged based on its image features.
 
-##### Convolutional Neural Network (CNN)
+- n_neighbors('k_best'): Based on testing, the best performing k value under the ROC AUC will be used in the model.
 
-##### Residual Network (ResNet)
+- p('1'): A p-value of 1 is chosen to indicate the use of Manhattan Distance, which works well with high-dimensional data like ours.
+
+<!--##### Naive Bayes Regression-->
+
+<!--##### Convolutional Neural Network (CNN)-->
+
+##### Residual Network 18 (ResNet18)
+
+ResNet18 is a neural network architecture that works well with image classification tasks. It's known for its ability to train deep networks and introduces skip connections to allow gradients to flow more effectively throughout its networks. It fits well for our image classification task. Two different optimizers, Adam and RMSProp, were extensively tested with different learning rates and weight decays to minimize loss and prevent overfitting.
+
+- pretrained('True'): This option pretrains the model with weights trained on ImageNet, which allows the models to start with generalized visual features, only requiring fine-tuning for our project.
+
+- lr(various): Various learning rates were tested to optimize training speed and overshooting to fit the best with our project.
+
+- wd(various): Various weight decays were tested to reduce overfitting to fit the best with our project.
 
 ## Results
 
