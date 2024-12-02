@@ -47,7 +47,7 @@ To classify if a pokemon is winged or not, we first built a logistic regression 
 
 Next, we will be building a KNN model which is non-parametric. It does not have a training phase, so we can save on runtime and do not need to worry about hyperparameter tuning for the model. 
 
-## Milestone4(Data Preprocessing):[Milestone4.ipynb](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/blob/Milestone4/Milestone4.ipynb)
+## Milestone4(Data Preprocessing):[Milestone4.ipynb](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/blob/main/Milestone4.ipynb)
 
 <a target="_blank" href="https://colab.research.google.com/github/cecilia-lin/CSE151A_Pokemon_Classification">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
