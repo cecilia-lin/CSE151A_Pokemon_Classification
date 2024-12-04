@@ -301,7 +301,7 @@ ResNet18 was the best-performing model, achieving a test accuracy of 97% and exc
 
 ### Name: Ayush Singh
 
-**Title**: Contributor
+**Title**: Coder & Writer
 
 **Contribution**:
    - I was a part of the inital discussions where we decided the topic, what we were going to do for EDA, Preprocessing and proposed to train the ResNet model
