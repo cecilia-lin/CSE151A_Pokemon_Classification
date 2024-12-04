@@ -315,3 +315,18 @@ ResNet18 was the best-performing model, achieving a test accuracy of 97% and exc
    - I've written the Discussion Section in this report along with Cecilia Lin
 
    - Apart from these, I've been been a part of our group discussions, and tackling any challenges that come along our way.
+
+### Name: Cecilia Lin
+
+**Title**: Co-Project Manager & Writer
+
+**Contribution**:
+   - I set up meetings and created agenda for the group. I wrote the first abstract of the project with Vincent, went to TA Esha's office hours to revise abstract.
+     
+   - I helped labeling the dataset and analyzed backgrounds of the images for Milestone 2.
+     
+   - I created learning curve and complexity graphs and wrote conclusions about our models for Milestone 3.
+     
+   - I wrote conclusions for our new models and discussions for Milestone 4.
+     
+   - I am actively involved with the project to make sure we meet all deadlines.
