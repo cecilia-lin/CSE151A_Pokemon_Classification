@@ -251,6 +251,33 @@ The performance of the classification models—Logistic Regression, K-Nearest Ne
 
 ## Discussion
 
+### EDA
+When we first explored the type of files in the dataset, we realized that we will be using python's built in libraries like PIL, so we decided it would be beneficial to get rid of them as there were very few of them. 
+
+Also, when we were looking at the images, we realized there were certain classes of water-type pokemons where there fins looked like wings, we decided to drop them as well as it could deviate the model from generalizing due to bad examples.
+
+### Data Preprocessing
+The images had different sizes, so we had to get them all to same size to use it as an input to a model. Also, the images were fairly huge in size, even as big as 1024x1024, and having bigger images mean more variables to learn, so, we decided to resize the images to 224x224. This number was chosen because we had an idea that we will try resnet, and that's the input size for resnet.
+
+We also normalized pixel values for a swift training and did a Train/Validate/Test splits for 80/10/10 on the data.
+
+Also, since the labels were "Winged" and "Not Winged", we made it a numeral value for model with 0 being "Not Winged" and 1 being "Winged"
+
+### Models
+
+1. **Logistic Regression**:
+   We knew that using Logistic Regression would not be a good idea for this usecase because images often have non-linear relations and it also can't adjust for zoom in images, the idea behind doing this was to make sure the initial pre-processing works well and also get a good baseline model. As expected, the model did not perform well, so we had our eyes set on SVC and KNN to see how well of an improvement can we get.
+
+2. **SVM**:
+   We again had an idea that SVM wouldn't be the best model to use since it again captures linear-relations, but it would be better that Logistic Regression since using kernel methods would allow us to have non-linear modifications for individual features. The idea was to test the new method we've learned in class and expreiment with how well it works. It did offer a significant improvement over the last method but still fell short on our expectations. So we continued on the second model we wanted to test, the KNN
+
+3. **KNN**
+   This was pure experiment, we thought using grouping similar images to get the label would result in good performance, but we were unsure on if it would be successful in using pixel values to group images, as many factors like brightness, colors, etc would come in play. The results were disappointing as the performance was worse than before, so we decided to move onto Deep Learning models.
+
+4. **ResNet18**
+   We knew that Deep Learning would outperform traditional machine learning models in this case as it excels at catching complex relations in images, we chose resnet specifically becuase of the amount of recommendations it had online, and we decided to start with the most basic 18-layer variant of it which delivered excellent results, so we chose it as our final model and didn't contiue to train complex models
+
+### Key ML Learnings from this Project
 1. **Class Imbalance**:
    - Logistic Regression and KNN struggled with classifying the minority class, as evidenced by their low precision and recall for winged Pokémon.
    - ResNet18 and SVM handled class imbalance better, with ResNet18 achieving the highest performance due to its ability to capture complex visual features.
@@ -269,3 +296,22 @@ The performance of the classification models—Logistic Regression, K-Nearest Ne
 ## Conclusion
 
 ResNet18 was the best-performing model, achieving a test accuracy of 97% and excelling at classifying both majority and minority classes. This highlights the superiority of deep learning for image classification tasks with complex visual features. Future work could focus on fine-tuning ResNet18’s hyperparameters, exploring ensemble techniques, or expanding the dataset to include a broader range of Pokémon species for improved generalization.
+
+## Statement of Collaboration
+
+### Name: Ayush Singh
+
+**Title**: Contributor
+
+**Contribution**:
+   - I was a part of the inital discussions where we decided the topic, what we were going to do for EDA, Preprocessing and proposed to train the ResNet model
+
+   - I designed the initial pipeline for Exploratory Data Analysis. It included getting rid of bad images, confusing labels, plotting the statistics, which helped us decide on the preprocessing pipeline.
+
+   - I also designed the initial pipeline for data preprocessing, which included resizing the images, normalizing pixel values, gray-scaling (we removed it later), and preparing the data splits. Other members later built upon this to modify the pipeline.
+
+   - I've trained and tuned the entire ResNet18 model, which included multiple experiments with optimizers, learning rates, and regularizations. This also resulted in our best performing and final model.
+
+   - I've written the Discussion Section in this report along with Cecilia Lin
+
+   - Apart from these, I've been been a part of our group discussions, and tackling any challenges that come along our way.
