@@ -52,15 +52,10 @@ The broader impact of a strong predictive model extends far beyond Pokémon. Ima
 
 *Figure 7.2: Confusion matrix for Support Vector Machine (SVM) showing classification performance on test data.*
 
-#### K-Nearest Neighbors (KNN)
-![KNN Confusion Matrix](results/KNeighborsClassifier/Confusion_Matrix.png)
-
-*Figure 7.3: Confusion matrix for K-Nearest Neighbors (KNN) showing classification performance on test data.*
-
 #### Residual Network 18 (ResNet18)
 ![ResNet18 Confusion Matrix](results/ResNet18/Confusion_Matrix.png)
 
-*Figure 7.4: Confusion matrix for Residual Network 18 (ResNet18) showing classification performance on test data.*
+*Figure 7.3: Confusion matrix for Residual Network 18 (ResNet18) showing classification performance on test data.*
 
 ### Figure 8: Learning Curves
 
@@ -74,15 +69,10 @@ The broader impact of a strong predictive model extends far beyond Pokémon. Ima
 
 *Figure 8.2: Learning curve for Support Vector Machine (SVM) showing training and validation accuracy as a function of training set size.*
 
-#### K-Nearest Neighbors (KNN)
-![KNN Learning Curve](results/KNeighborsClassifier/Accuracy_Size.png)
-
-*Figure 8.3: Learning curve for K-Nearest Neighbors showing training and validation accuracy as a function of training set size.*
-
 #### Residual Network 18 (ResNet18)
 ![ResNet18 Learning Curve](results/Resnet18/Loss_Curve.png)
 
-*Figure 8.4: Loss curve for Residual Network 18 showing training and validation loss as a function of epochs.*
+*Figure 8.3: Loss curve for Residual Network 18 showing training and validation loss as a function of epochs.*
 
 ### Figure 9: Hyperparameter Tuning
 
@@ -104,15 +94,6 @@ The broader impact of a strong predictive model extends far beyond Pokémon. Ima
 
 *Figure 9.4: F1-score vs. regularization strength for SVM showing the best performance.*
 
-#### K-Nearest Neighbors (KNN)
-![KNN Hyperparameter Tuning](results/KNeighborsClassifier/Error_K.png)
-
-*Figure 9.5: Error vs. number of neighbors (k) for K-Nearest Neighbors showing the optimal k value.*
-
-![KNN ROC-AUC Tuning](results/KNeighborsClassifier/ROC-AUC_K.png)
-
-*Figure 9.6: ROC-AUC vs. number of neighbors (k) for KNN illustrating the best performance.*
-
 ### Figure 10: Example Predictions
 
 #### Logistic Regression
@@ -125,13 +106,8 @@ The broader impact of a strong predictive model extends far beyond Pokémon. Ima
 
 *Figure 10.2: Example Pokémon predictions for SVM, showing true and predicted labels.*
 
-#### K-Nearest Neighbors (KNN)
-![KNN Predictions](results/KNeighborsClassifier/Pred_Examples.png)
-
-*Figure 10.3: Example Pokémon predictions for KNN, showing true and predicted labels.*
-
 #### Residual Network 18 (ResNet18)
-
+![Resnet Predictions](results/Resnet18/Pred_Examples.png)
 
 *Figure 10.4: Example Pokémon predictions for Residual Network 18, showing true and predicted labels.*
 
@@ -191,15 +167,6 @@ SVM is a supervised learning algorithm used for both classification and regressi
 
 - class_weight('balanced'): Even thought the input data for this model is randomly sampled and balanced during preprocessing, the 'balanced' option is chosen to automatically balance the weights of each class frequency.
 
-#### K-Nearest Neighbors (KNN)
-
-K-Nearest Neighbors is an instance-based learning algorithm that sorts data points into classes based on the classes of its nearest neighbors in the feature space. KNN is able to classify a Pokemon as winged or not-winged based on its image features.
-
-- n_neighbors('k_best'): Based on testing, the best performing k value under the ROC AUC will be used in the model.
-
-- p('1'): A p-value of 1 is chosen to indicate the use of Manhattan Distance, which works well with high-dimensional data like ours.
-
-<!--#### Naive Bayes Regression-->
 
 <!--#### Convolutional Neural Network (CNN)-->
 
@@ -215,39 +182,32 @@ ResNet18 is a neural network architecture that works well with image classificat
 
 ## Results
 
-The performance of the classification models—Logistic Regression, K-Nearest Neighbors (KNN), Support Vector Machine (SVM), and Residual Network 18 (ResNet18)—was evaluated using precision, recall, f1-score, and accuracy on the training, validation, and test datasets. Below are the results:
+The performance of the classification models—Logistic Regression, Support Vector Machine (SVM), and Residual Network 18 (ResNet18)—was evaluated using precision, recall, f1-score, and accuracy on the training, validation, and test datasets. Below are the results:
 
 ### Logistic Regression
-- **Training Accuracy**: 64%
+- **Training Accuracy**: 63%
 - **Validation Accuracy**: 63%
-- **Test Accuracy**: 59%
+- **Test Accuracy**: 58%
 - **Observations**:
   - Logistic Regression achieved moderate precision and recall on the training and validation datasets.
-  - On the test set, the model struggled with the minority class (winged Pokémon), showing poor precision (16%) and recall (50%).
+  - On the test set, the model struggled with the minority class (winged Pokémon), showing poor precision (17%) and recall (53%).
 
-### K-Nearest Neighbors (KNN)
-- **Training Accuracy**: 88%
-- **Validation Accuracy**: 81%
-- **Test Accuracy**: 62%
-- **Observations**:
-  - KNN showed high training accuracy but experienced a significant drop in validation and test accuracy, indicating overfitting.
-  - Performance for the minority class (winged Pokémon) was notably weak, with a test precision of 20% and recall of 64%.
 
 ### Support Vector Machine (SVM)
-- **Training Accuracy**: 97%
-- **Validation Accuracy**: 87%
-- **Test Accuracy**: 72%
+- **Training Accuracy**: 80%
+- **Validation Accuracy**: 77%
+- **Test Accuracy**: 69%
 - **Observations**:
   - SVM demonstrated strong performance on the training and validation datasets, reflecting good generalization.
-  - On the test set, its performance was better than KNN and Logistic Regression but still struggled with minority class precision (25%) and recall (55%).
+  - On the test set, its performance was better than Logistic Regression but still struggled with minority class precision (24%) and recall (62%).
 
 ### Residual Network 18 (ResNet18)
-- **Training Accuracy**: 100%
-- **Validation Accuracy**: 97%
-- **Test Accuracy**: 97%
+- **Training Accuracy**: 99%
+- **Validation Accuracy**: 99%
+- **Test Accuracy**: 98%
 - **Observations**:
   - ResNet18 outperformed all other models, achieving nearly perfect accuracy across datasets.
-  - It excelled at classifying the minority class, with a precision of 92% and recall of 85%, making it the best-suited model for this classification task.
+  - It excelled at classifying the minority class, with a precision of 93% and recall of 94%, making it the best-suited model for this classification task.
 
 ## Discussion
 
@@ -266,25 +226,21 @@ Also, since the labels were "Winged" and "Not Winged", we made it a numeral valu
 ### Models
 
 1. **Logistic Regression**:
-   We knew that using Logistic Regression would not be a good idea for this usecase because images often have non-linear relations and it also can't adjust for zoom in images, the idea behind doing this was to make sure the initial pre-processing works well and also get a good baseline model. As expected, the model did not perform well, so we had our eyes set on SVC and KNN to see how well of an improvement can we get.
+   We knew that using Logistic Regression would not be a good idea for this usecase because images often have non-linear relations and it also can't adjust for zoom in images, the idea behind doing this was to make sure the initial pre-processing works well and also get a good baseline model. As expected, the model did not perform well, so we had our eyes set on SVC to see how well of an improvement can we get.
 
 2. **SVM**:
-   We again had an idea that SVM wouldn't be the best model to use since it again captures linear-relations, but it would be better that Logistic Regression since using kernel methods would allow us to have non-linear modifications for individual features. The idea was to test the new method we've learned in class and expreiment with how well it works. It did offer a significant improvement over the last method but still fell short on our expectations. So we continued on the second model we wanted to test, the KNN
+   We again had an idea that SVM wouldn't be the best model to use since it again captures linear-relations, but it would be better that Logistic Regression since using kernel methods would allow us to have non-linear modifications for individual features. The idea was to test the new method we've learned in class and expreiment with how well it works. It did offer a significant improvement over the last method but still fell short on our expectations. So we continued on the next model we wanted to test, the Resnet18
 
-3. **KNN**
-   This was pure experiment, we thought using grouping similar images to get the label would result in good performance, but we were unsure on if it would be successful in using pixel values to group images, as many factors like brightness, colors, etc would come in play. The results were disappointing as the performance was worse than before, so we decided to move onto Deep Learning models.
-
-4. **ResNet18**
+3. **ResNet18**
    We knew that Deep Learning would outperform traditional machine learning models in this case as it excels at catching complex relations in images, we chose resnet specifically becuase of the amount of recommendations it had online, and we decided to start with the most basic 18-layer variant of it which delivered excellent results, so we chose it as our final model and didn't contiue to train complex models
 
 ### Key ML Learnings from this Project
 1. **Class Imbalance**:
-   - Logistic Regression and KNN struggled with classifying the minority class, as evidenced by their low precision and recall for winged Pokémon.
+   - Logistic Regression struggled with classifying the minority class, as evidenced by their low precision and recall for winged Pokémon.
    - ResNet18 and SVM handled class imbalance better, with ResNet18 achieving the highest performance due to its ability to capture complex visual features.
 
 2. **Overfitting**:
    - ResNet18 achieved perfect training accuracy, but its excellent validation and test performance indicate effective mitigation of overfitting through techniques like data augmentation and weight decay.
-   - KNN exhibited overfitting, as evidenced by the large performance gap between training and test datasets.
 
 3. **Generalization**:
    - ResNet18 demonstrated the best generalization, with consistently high metrics across datasets.
@@ -295,7 +251,7 @@ Also, since the labels were "Winged" and "Not Winged", we made it a numeral valu
 
 ## Conclusion
 
-ResNet18 was the best-performing model, achieving a test accuracy of 97% and excelling at classifying both majority and minority classes. This highlights the superiority of deep learning for image classification tasks with complex visual features. Future work could focus on fine-tuning ResNet18’s hyperparameters, exploring ensemble techniques, or expanding the dataset to include a broader range of Pokémon species for improved generalization.
+ResNet18 was the best-performing model, achieving a test accuracy of 98% and excelling at classifying both majority and minority classes. This highlights the superiority of deep learning for image classification tasks with complex visual features. Future work could focus on fine-tuning ResNet18’s hyperparameters, exploring ensemble techniques, or expanding the dataset to include a broader range of Pokémon species for improved generalization.
 
 ## Statement of Collaboration
 
@@ -330,3 +286,28 @@ ResNet18 was the best-performing model, achieving a test accuracy of 97% and exc
    - I wrote conclusions for our new models and discussions for Milestone 4.
      
    - I am actively involved with the project to make sure we meet all deadlines.
+
+### Name: Cindy Hong
+
+**Title**: Coder, Co-Project Manager, & Writer
+
+**Contribution**:
+
+- Participated in the initial discussions and proposed the idea of training Logistic Regression, SVM, and KNN models. 
+- Contributed to the Exploratory Data Analysis (EDA) by analyzing data and incorporating the use of the os library to make the notebook executable on all team members' machines without modifying paths. 
+- Enhanced the initial data preprocessing pipeline by wrapping preprocessing code into reusable functions for easier subsequent calls. Added Z-score and Min-max normalization methods to facilitate further experimentation. 
+- Developed data augmentation functions to address data imbalance by oversampling through image rotation, translation, and flipping. 
+- Created downsampling functions to address data imbalance (later discarded). 
+- Wrapped the learning curve and complexity graph generation code into reusable functions for better accessibility. 
+- Developed functions to visualize and print confusion matrices and to display prediction examples on training, validation, and test sets. 
+- Trained and tuned the Logistic Regression and SVM models, experimenting with different regularization methods and strengths. 
+- Attempted training and tuning the KNN model, using the ROC-AUC curve to determine the optimal value of k, but the model did not yield satisfactory results (later discarded). 
+- Contributed to training and tuning of the ResNet18 model, experimenting with optimizers, but the performance was suboptimal (not adopted). 
+- Trained and tuned a custom CNN model, but it did not perform well (later discarded). 
+- Attended Cindy's office hours to seek project topic suggestions
+- Visited Howard's office hours multiple times to discuss overfitting issues and experimented with possible solutions. 
+- Contacted Professor Solares after class to request GPU resources for deep learning model training and sought advice regarding model sampling methods. 
+- Actively participated in the project, frequently summarizing the upcoming milestone requirements, coordinating with team members for task distribution, and ensuring timely completion of all milestones. 
+- Wrote the final version of the project abstract based on the initial draft. 
+
+
