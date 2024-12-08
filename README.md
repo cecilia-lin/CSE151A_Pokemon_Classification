@@ -482,3 +482,6 @@ This project effectively demonstrated the application of machine learning techni
 - Organized the final version of the report and supplemented all sections with final results.
 - Attended Office Hours with group members to review Final Milestone requirements.
 - Attended group discussions and meetings.
+
+
+ChatGPT:https://docs.google.com/document/d/1uZLX1wxNKX3_IAx7YvsYM7n8N7J13PedCZ3WOxa7LGM/edit?usp=sharing 
