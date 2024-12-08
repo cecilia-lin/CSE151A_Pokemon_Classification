@@ -100,9 +100,6 @@ Finally, methods to manipulate the dataset for use with our models were implemen
 The first model we decided to use was Logistic Regression. Logistic Regression is a supervised learning algorithm used for binary classification. Since Logistic Regression takes 1-dimensional inputs, the image data was flattened into a 1D vector in order to fit into our model.
 
 
-- max_iter('100'): This defines the maximum number of iterations taken for the solvers to converge. We chose a default value of 100.
-
-
 - solver('lbfgs'): This solving algorithm can handle large datasets and is the default sorting algorithm, which ended up being our choice as well.
 
 
@@ -368,12 +365,13 @@ We chose ResNet specifically because of the number of recommendations it had onl
 
 
 1. **Class Imbalance**:
-   - Logistic Regression struggled with classifying the minority class, as evidenced by their low precision and recall for winged Pokémon.
-   - ResNet18 and SVM handled class imbalance better, with ResNet18 achieving the highest performance due to its ability to capture complex visual features.
+   - Logistic Regression and SVM struggled with classifying the minority class, as evidenced by their low precision and recall for winged Pokémon.
+   - ResNet18 handled class imbalance better, achieving the highest performance due to its ability to capture complex visual features.
 
 
 2. **Overfitting**:
    - ResNet18 achieved perfect training accuracy, but its excellent validation and test performance indicate effective mitigation of overfitting through techniques like data augmentation and weight decay.
+   - Despite our best efforts, including attempts with data augmentation, regularization, using simpler kernels, and various data preprocessing methods, the gap in accuracy between the training and test sets of SVM remained above 10%. However, the process of tuning the kernel allowed us to gain a better understanding of identifying overfitting through learning curves and loss curves.
 
 
 3. **Generalization**:
@@ -463,6 +461,7 @@ This project effectively demonstrated the application of machine learning techni
 - Attempted training and tuning the KNN model, using the ROC-AUC curve to determine the optimal value of k, but the model did not yield satisfactory results (later discarded).
 - Contributed to training and tuning of the ResNet18 model, experimenting with optimizers, but the performance was suboptimal (not adopted).
 - Trained and tuned a custom CNN model, but it did not perform well (later discarded).
+- Developed functions to visualize ResNet18's loss curves and other plots
 - Attended Cindy's office hours to seek project topic suggestions
 - Visited Howard's office hours multiple times to discuss overfitting issues and experimented with possible solutions.
 - Contacted Professor Solares after class to request GPU resources for deep learning model training and sought advice regarding model sampling methods.
