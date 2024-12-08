@@ -48,13 +48,13 @@ Then, pixels in each of the images were normalized. Multiple functions were made
 *Figure 3: Examples of Pokémon images after applying Z-score and Min-Max normalization.*
 <br />
 
-Additionally, a function was created for data augmentation. Functions from the PIL used to implement flip/rotation/shifting changes were condensed into a single function to be used on certain images for training or testing.
+Additionally, a function was created for data augmentation. Functions from the PIL used to implement flip/rotation/shifting changes were condensed into a single function to be used on certain images for oversampling.
 
 ![Augmented Images](images/augmented_images.png)
 *Figure 4: Examples of Pokémon images after applying data augmentation, including rotations, flips, and shifts.*
 <br />
 
-Finally, methods to manipulate the dataset for use with our models were implemented. Random sampling from both winged and non-winged Pokémon was decided to be used as the method to resolve the imbalances between the two classes of Pokémon. The dataset was also split into training/validation/testing sets with a 80/10/10 split, respectively. We wanted to serialize our two classes, "winged" and "non-winged", so we gave each class a numerical classification, with 0 being "non-winged" and 1 being "winged". All of the data preprocessing and augmentation described above was then applied on the dataset for the appropriate models.
+Finally, methods to manipulate the dataset for use with our models were implemented. Random sampling from both winged and non-winged Pokémon was decided to be used as the method to resolve the imbalances between the two classes of Pokémon. The dataset was also split into training/validation/testing sets with a 10% test split and a 80/20 training/validation split. We wanted to serialize our two classes, "winged" and "non-winged", so we gave each class a numerical classification, with 0 being "non-winged" and 1 being "winged". All of the data preprocessing and augmentation described above was then applied on the dataset for the appropriate models.
 
 ### Models
 
@@ -100,7 +100,7 @@ ResNet18 is a neural network architecture that works well with image classificat
 The performance of the classification models—Logistic Regression, Support Vector Machine (SVM), and Residual Network 18 (ResNet18)—was evaluated using precision, recall, f1-score, and accuracy on the training, validation, and test datasets. Below are the results:
 
 ### Logistic Regression
-![Logistic Regression Confusion Matrix](results/LogisticRegression/results.png)
+![Logistic Regression Results Report](results/LogisticRegression/Report.png)
 *Figure 7.1: Results of Logistic Regression on both non-winged (0) and winged (1) Pokémon*
 <br />
 
@@ -120,39 +120,43 @@ The performance of the classification models—Logistic Regression, Support Vect
 <br />
 
 ### Support Vector Machine (SVM)
-- **Training Accuracy**: 80%
+![SVM Results Report](results/SVC/Report.png)
+*Figure 8.1: Results of Logistic Regression on both non-winged (0) and winged (1) Pokémon*
+<br />
+
+- **Training Accuracy**: 79%
 - **Validation Accuracy**: 77%
-- **Test Accuracy**: 69%
+- **Test Accuracy**: 65%
 - **Key Observations**:
   - SVM demonstrated strong performance on the training and validation datasets, reflecting good generalization.
-  - On the test set, its performance was better than Logistic Regression but still struggled with minority class precision (24%) and recall (62%).
+  - On the test set, its performance was better than Logistic Regression but still struggled with minority class precision (21%) and recall (61%).
 
 ![SVM Confusion Matrix](results/SVC/Confusion_Matrix.png)
-*Figure 8.1: Confusion matrix for Support Vector Machine (SVM) showing classification performance on test data.*
+*Figure 8.2: Confusion matrix for Support Vector Machine (SVM) showing classification performance on test data.*
 <br />
 
 ![SVM Predictions](results/SVC/Pred_Examples.png)
-*Figure 8.2: Example Pokémon predictions for SVM, showing true and predicted labels.*
+*Figure 8.3: Example Pokémon predictions for SVM, showing true and predicted labels.*
 <br />
 
 ### Residual Network 18 (ResNet18)
-![Logistic Regression Confusion Matrix](results/ResNet18/results.png)
-*Figure 7.1: Results of ResNet18 on both non-winged (0) and winged (1) Pokémon*
+![ResNet18 Results Report](results/ResNet18/Report.png)
+*Figure 9.1: Results of ResNet18 on both non-winged (0) and winged (1) Pokémon*
 <br />
 
 - **Training Accuracy**: 99%
-- **Validation Accuracy**: 99%
+- **Validation Accuracy**: 98%
 - **Test Accuracy**: 98%
 - **Key Observations**:
   - ResNet18 outperformed all other models, achieving nearly perfect accuracy across datasets.
-  - It excelled at classifying the minority class (winged), with a precision of 93% and recall of 94%, making it the best-suited model for this classification task.
+  - It excelled at classifying the minority class (winged), with a precision of 95% and recall of 90%, making it the best-suited model for this classification task.
  
 ![ResNet18 Confusion Matrix](results/Resnet18/Confusion_Matrix.png)
-*Figure 9.1: Confusion matrix for ResNet18 showing classification performance on test data.*
+*Figure 9.2: Confusion matrix for ResNet18 showing classification performance on test data.*
 <br />
 
 ![Resnet Predictions](results/Resnet18/Pred_Examples.png)
-*Figure 9.2: Example Pokémon predictions for Residual Network 18, showing true and predicted labels.*
+*Figure 9.3: Example Pokémon predictions for Residual Network 18, showing true and predicted labels.*
 <br />
 
 ## Discussion
@@ -181,13 +185,13 @@ Additionally, some images had different sizes, so we had to get them all to the 
 
 Then, pixels in each of the images were normalized. We made multiple functions to use different forms of pixel normalization for different models, such as z-score and min-max normalization. We visualized the results of each type of normalization and decided on the best method for each of our models.
 
-Finally, methods to manipulate the dataset for use with our models were implemented. We saw that there was an imbalance between the frequency of non-winged and winged Pokémon, so we wrote a function to We split the dataset into training/validation/testing sets with a 80/10/10 split, respectively. 
+Finally, methods to manipulate the dataset for use with our models were implemented. We saw that there was an imbalance between the frequency of non-winged and winged Pokémon, so we wrote a function to handle data augmentation for models that couldn't directly handle unbalanced data, namely the LR and SVM models. For the training/validation/testing sets, we first split 10% as testing data. Since the dataset is unbalanced, we decided to oversample the remaining data through data augmentation and split the augmented data into 80/20 training/validation sets. This allowed us to get accurate results with our traditional machine learning models. ResNet, however, can handle unbalanced sets on its own, so no data augmentation was needed for the model. ResNet featured a more standard 80/10/10 train/test/validation split.
 
 ### Models
 
 #### 1. Logistic Regression
 
-We knew that using Logistic Regression would not be a good idea for this use case because images often have non-linear relations and it also can't adjust for zoom in images, the idea behind doing this was to make sure the initial pre-processing works well and also get a good baseline model. To get started, we first looked into finding the best parameters for Logistic Regression. We wanted to be aggressive on regularization and parameter hypertuning to prevent overfitting and obtain the best results, so we decided to we test a range of training set sizes and regularization strength, such as the parameter "C". The results are outlined in the following figures.
+We knew that using Logistic Regression would not be a good idea for this use case because images often have non-linear relations and it also can't adjust for zoom in images, the idea behind doing this was to make sure the initial pre-processing works well and also get a good baseline model. To get started, we first looked into finding the best parameters for Logistic Regression. We wanted to be aggressive on regularization and parameter  hypertuning to prevent overfitting and obtain the best results, so we decided to we test a range of training set sizes and regularization strength, such as the parameter "C". The results are outlined in the following figures.
 
 ![Logistic Regression Learning Curve](results/LogisticRegression/Accuracy_Size.png)
 *Figure 10.1: Learning curve for Logistic Regression*
@@ -316,7 +320,7 @@ This project effectively demonstrated the application of machine learning techni
 
 **Contribution**:
 
-- Wrote the Methods section of the final report.
+- Wrote the Methods section in the final report.
+- Organized final version of the report and supplemented all sections with final results.
 - Attended Office Hours with group members to review Final Milestone requirements.
-- Organized final version of the report and touched up on all sections.
 - Attended group discussions and meetings.
