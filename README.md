@@ -148,7 +148,7 @@ The performance of the classification models—Logistic Regression, Support Vect
   - ResNet18 outperformed all other models, achieving nearly perfect accuracy across datasets.
   - It excelled at classifying the minority class, with a precision of 93% and recall of 94%, making it the best-suited model for this classification task.
  
-![ResNet18 Confusion Matrix](results/ResNet18/Confusion_Matrix.png)
+![ResNet18 Confusion Matrix](results/Resnet18/Confusion_Matrix.png)
 
 *Figure 9.1: Confusion matrix for Residual Network 18 (ResNet18) showing classification performance on test data.*
 
