@@ -437,6 +437,10 @@ This project effectively demonstrated the application of machine learning techni
    - I created learning curve and complexity graphs and wrote conclusions about our models for Milestone 3.
      
    - I wrote conclusions for our new models and discussions for Milestone 4.
+
+   - I wrote and revised the conclusions in the Jupyter notebook.
+  
+   - I cleaned the format of notebook and arranged figures for README for better readability.
      
    - I am actively involved with the project to make sure we meet all deadlines.
 
