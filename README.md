@@ -230,6 +230,10 @@ Also, since the labels were "Winged" and "Not Winged", we made it a numeral valu
 
 ResNet18 was the best-performing model, achieving a test accuracy of 98% and excelling at classifying both majority and minority classes. This highlights the superiority of deep learning for image classification tasks with complex visual features. Future work could focus on fine-tuning ResNet18’s hyperparameters, exploring ensemble techniques, or expanding the dataset to include a broader range of Pokémon species for improved generalization.
 
+Additionally, expanding the dataset to include more Pokémon species could address class imbalance and improve generalization. Incorporating strategies to better handle class imbalance, such as refined sampling methods or targeted augmentation, might also enhance the model's ability to classify the minority class accurately.
+
+This project effectively demonstrated the application of machine learning techniques to a creative and complex classification task. Starting with simpler models and progressing to a deep learning approach like ResNet18 provided a thorough exploration of image classification challenges. The results showcase the potential of these methods to address real-world problems, offering a strong basis for future work in image-based predictive modeling.
+
 ## Statement of Collaboration
 
 ### Name: Ayush Singh
