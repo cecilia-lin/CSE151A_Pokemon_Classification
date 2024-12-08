@@ -178,32 +178,30 @@ Also, since the labels were "Winged" and "Not Winged", we made it a numeral valu
 #### Logistic Regression
 ![Logistic Regression Learning Curve](results/LogisticRegression/Accuracy_Size.png)
 
-*Figure 8.1: Learning curve for Logistic Regression showing training and validation accuracy as a function of training set size.*
+*Figure 10.1: Learning curve for Logistic Regression showing training and validation accuracy as a function of training set size.*
 
 ![Logistic Regression Hyperparameter Tuning](results/LogisticRegression/Error_Complexity.png)
 
-*Figure 8.2: Error vs. regularization strength for Logistic Regression showing the optimal regularization parameter.*
+*Figure 10.2: Error vs. regularization strength for Logistic Regression showing the optimal regularization parameter.*
 
 ![Logistic Regression F1-Score Tuning](results/LogisticRegression/F1_Score_Complexity.png)
 
-*Figure 8.3: F1-score vs. regularization strength for Logistic Regression showing the best F1 performance.*
+*Figure 10.3: F1-score vs. regularization strength for Logistic Regression showing the best F1 performance.*
 
 2. **SVM**:
    We again had an idea that SVM wouldn't be the best model to use since it again captures linear-relations, but it would be better that Logistic Regression since using kernel methods would allow us to have non-linear modifications for individual features. The idea was to test the new method we've learned in class and expreiment with how well it works. It did offer a significant improvement over the last method but still fell short on our expectations. So we continued on the next model we wanted to test, the Resnet18
 
-
-#### Support Vector Machine (SVM)
 ![SVM Learning Curve](results/SVC/Accuracy_Size.png)
 
-*Figure 9.1: Learning curve for Support Vector Machine (SVM) showing training and validation accuracy as a function of training set size.*
+*Figure 11.1: Learning curve for Support Vector Machine (SVM) showing training and validation accuracy as a function of training set size.*
 
 ![SVM Hyperparameter Tuning](results/SVC/Error_Complexity.png)
 
-*Figure 9.2: Error vs. regularization strength for Support Vector Machine (SVM) highlighting optimal parameters.*
+*Figure 11.2: Error vs. regularization strength for Support Vector Machine (SVM) highlighting optimal parameters.*
 
 ![SVM F1-Score Tuning](results/SVC/F1_Score_Complexity.png)
 
-*Figure 9.3: F1-score vs. regularization strength for SVM showing the best performance.*
+*Figure 11.3: F1-score vs. regularization strength for SVM showing the best performance.*
 
 4. **ResNet18**
    We knew that Deep Learning would outperform traditional machine learning models in this case as it excels at catching complex relations in images, we chose resnet specifically becuase of the amount of recommendations it had online, and we decided to start with the most basic 18-layer variant of it which delivered excellent results, so we chose it as our final model and didn't contiue to train complex models
@@ -211,8 +209,7 @@ Also, since the labels were "Winged" and "Not Winged", we made it a numeral valu
 #### Residual Network 18 (ResNet18)
 ![ResNet18 Learning Curve](results/Resnet18/Loss_Curve.png)
 
-*Figure 10.1: Loss curve for Residual Network 18 showing training and validation loss as a function of epochs.*
-
+*Figure 12.1: Loss curve for Residual Network 18 showing training and validation loss as a function of epochs.*
 
 ### Key ML Learnings from this Project
 1. **Class Imbalance**:
