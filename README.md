@@ -8,30 +8,6 @@ We chose this project because it combines technical rigor with creativity, makin
 
 The broader impact of a strong predictive model extends far beyond Pokémon. Image classification powers technologies in fields such as healthcare, autonomous vehicles, and e-commerce, where precise visual understanding drives critical decisions. By applying machine learning techniques to this imaginative dataset, we demonstrate how predictive models can be both impactful and accessible, inspiring further innovation in computer vision.
 
-
-
-
-
-
-### Figure 10: Example Predictions
-
-#### Logistic Regression
-![Logistic Regression Predictions](results/LogisticRegression/Pred_Examples.png)
-
-*Figure 10.1: Example Pokémon predictions for Logistic Regression, showing true and predicted labels.*
-
-#### Support Vector Machine (SVM)
-![SVM Predictions](results/SVC/Pred_Examples.png)
-
-*Figure 10.2: Example Pokémon predictions for SVM, showing true and predicted labels.*
-
-#### Residual Network 18 (ResNet18)
-![Resnet Predictions](results/Resnet18/Pred_Examples.png)
-
-*Figure 10.4: Example Pokémon predictions for Residual Network 18, showing true and predicted labels.*
-
-
-
 ## Methods
 
 ### EDA
@@ -140,12 +116,13 @@ The performance of the classification models—Logistic Regression, Support Vect
   - Logistic Regression achieved moderate precision and recall on the training and validation datasets.
   - On the test set, the model struggled with the minority class (winged Pokémon), showing poor precision (17%) and recall (53%).
  
-### Figure 7: Confusion Matrices
-
-#### Logistic Regression
 ![Logistic Regression Confusion Matrix](results/LogisticRegression/Confusion_Matrix.png)
 
 *Figure 7.1: Confusion matrix for Logistic Regression showing classification performance on test data.*
+
+![Logistic Regression Predictions](results/LogisticRegression/Pred_Examples.png)
+
+*Figure 7.2: Example Pokémon predictions for Logistic Regression, showing true and predicted labels.*
 
 ### Support Vector Machine (SVM)
 - **Training Accuracy**: 80%
@@ -155,10 +132,13 @@ The performance of the classification models—Logistic Regression, Support Vect
   - SVM demonstrated strong performance on the training and validation datasets, reflecting good generalization.
   - On the test set, its performance was better than Logistic Regression but still struggled with minority class precision (24%) and recall (62%).
 
-#### Support Vector Machine (SVM)
 ![SVM Confusion Matrix](results/SVC/Confusion_Matrix.png)
 
-*Figure 7.2: Confusion matrix for Support Vector Machine (SVM) showing classification performance on test data.*
+*Figure 8.1: Confusion matrix for Support Vector Machine (SVM) showing classification performance on test data.*
+
+![SVM Predictions](results/SVC/Pred_Examples.png)
+
+*Figure 8.2: Example Pokémon predictions for SVM, showing true and predicted labels.*
 
 ### Residual Network 18 (ResNet18)
 - **Training Accuracy**: 99%
@@ -168,10 +148,13 @@ The performance of the classification models—Logistic Regression, Support Vect
   - ResNet18 outperformed all other models, achieving nearly perfect accuracy across datasets.
   - It excelled at classifying the minority class, with a precision of 93% and recall of 94%, making it the best-suited model for this classification task.
  
-#### Residual Network 18 (ResNet18)
 ![ResNet18 Confusion Matrix](results/ResNet18/Confusion_Matrix.png)
 
-*Figure 7.3: Confusion matrix for Residual Network 18 (ResNet18) showing classification performance on test data.*
+*Figure 9.1: Confusion matrix for Residual Network 18 (ResNet18) showing classification performance on test data.*
+
+![Resnet Predictions](results/Resnet18/Pred_Examples.png)
+
+*Figure 9.2: Example Pokémon predictions for Residual Network 18, showing true and predicted labels.*
 
 ## Discussion
 
