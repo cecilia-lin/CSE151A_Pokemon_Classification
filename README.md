@@ -8,91 +8,10 @@ We chose this project because it combines technical rigor with creativity, makin
 
 The broader impact of a strong predictive model extends far beyond Pokémon. Image classification powers technologies in fields such as healthcare, autonomous vehicles, and e-commerce, where precise visual understanding drives critical decisions. By applying machine learning techniques to this imaginative dataset, we demonstrate how predictive models can be both impactful and accessible, inspiring further innovation in computer vision.
 
-## Figures
 
-### Figure 1: Class Distribution
-![Class Distribution](images/class_distribution.png)
 
-*Figure 1: Class distribution showing imbalance between winged and not winged Pokémon.*
 
-### Figure 2: Examples of 'Bad Data'
-![Bad Data Examples](images/bad_data_examples.png)
 
-*Figure 2: Examples of Pokémon images marked as 'bad data,' which were excluded during preprocessing.*
-
-### Figure 3: Image Dimensions Before and After Resizing
-![Image Dimensions](images/image_dimensions.png)
-
-*Figure 3: Scatter plots showing image dimensions before and after resizing to 224x224 pixels.*
-
-### Figure 4: Resized Images
-![Resized Images](images/resized_examples.png)
-
-*Figure 4: Examples of Pokémon images after resizing to 224x224 pixels.*
-
-### Figure 5: Normalized Images
-![Normalized Images](images/normalized_images.png)
-
-*Figure 5: Examples of Pokémon images after applying Z-score and Min-Max normalization.*
-
-### Figure 6: Augmented Images
-![Augmented Images](images/augmented_images.png)
-
-*Figure 6: Examples of Pokémon images after applying data augmentation, including rotations, flips, and shifts.*
-
-### Figure 7: Confusion Matrices
-
-#### Logistic Regression
-![Logistic Regression Confusion Matrix](results/LogisticRegression/Confusion_Matrix.png)
-
-*Figure 7.1: Confusion matrix for Logistic Regression showing classification performance on test data.*
-
-#### Support Vector Machine (SVM)
-![SVM Confusion Matrix](results/SVC/Confusion_Matrix.png)
-
-*Figure 7.2: Confusion matrix for Support Vector Machine (SVM) showing classification performance on test data.*
-
-#### Residual Network 18 (ResNet18)
-![ResNet18 Confusion Matrix](results/ResNet18/Confusion_Matrix.png)
-
-*Figure 7.3: Confusion matrix for Residual Network 18 (ResNet18) showing classification performance on test data.*
-
-### Figure 8: Learning Curves
-
-#### Logistic Regression
-![Logistic Regression Learning Curve](results/LogisticRegression/Accuracy_Size.png)
-
-*Figure 8.1: Learning curve for Logistic Regression showing training and validation accuracy as a function of training set size.*
-
-#### Support Vector Machine (SVM)
-![SVM Learning Curve](results/SVC/Accuracy_Size.png)
-
-*Figure 8.2: Learning curve for Support Vector Machine (SVM) showing training and validation accuracy as a function of training set size.*
-
-#### Residual Network 18 (ResNet18)
-![ResNet18 Learning Curve](results/Resnet18/Loss_Curve.png)
-
-*Figure 8.3: Loss curve for Residual Network 18 showing training and validation loss as a function of epochs.*
-
-### Figure 9: Hyperparameter Tuning
-
-#### Logistic Regression
-![Logistic Regression Hyperparameter Tuning](results/LogisticRegression/Error_Complexity.png)
-
-*Figure 9.1: Error vs. regularization strength for Logistic Regression showing the optimal regularization parameter.*
-
-![Logistic Regression F1-Score Tuning](results/LogisticRegression/F1_Score_Complexity.png)
-
-*Figure 9.2: F1-score vs. regularization strength for Logistic Regression showing the best F1 performance.*
-
-#### Support Vector Machine (SVM)
-![SVM Hyperparameter Tuning](results/SVC/Error_Complexity.png)
-
-*Figure 9.3: Error vs. regularization strength for Support Vector Machine (SVM) highlighting optimal parameters.*
-
-![SVM F1-Score Tuning](results/SVC/F1_Score_Complexity.png)
-
-*Figure 9.4: F1-score vs. regularization strength for SVM showing the best performance.*
 
 ### Figure 10: Example Predictions
 
@@ -113,7 +32,6 @@ The broader impact of a strong predictive model extends far beyond Pokémon. Ima
 
 
 
-
 ## Methods
 
 ### EDA
@@ -122,11 +40,16 @@ After deciding on our topic and dataset, we took some time to explore our datase
 
 - Winged/not winged: We first graphed the frequency of each of the two classes. Results showed that were much more examples of not winged than winged Pokemon. We would either have to sample an equal number of images from both sets or use a wegith balance optimizer to accomodate for this imbalance.
 
+### Figure 1: Class Distribution
+![Class Distribution](images/class_distribution.png)
+
+*Figure 1: Class distribution showing imbalance between winged and not winged Pokémon.*
+
 - Image Dimensions: Our images were of various dimensions, so these needed to be resized and standardized to be used with our model. A scatter plot of image dimensions was created before and after potential re-sizing to visualize the results.
 
 - Color: Initially, we believed that grayscaling the images would simplify inputs for our models. However, we later learned that having colors in our images does matter. We looked into different methods of normalizing pixel data.
 
-- Background//type diversity: When looking at different images of the same Pokemon, it is clear that different images come from different sources, for example 3D rendering, plushies, cartoon/anime, or pokemon cards. These differences, along with the associated image backgrounds of each type of picture, were analyzed. The images and their backgrounds needed to be normalized in order to eliminate the possibility of them affecting the results of our model.
+- Background/type diversity: When looking at different images of the same Pokemon, it is clear that different images come from different sources, for example 3D rendering, plushies, cartoon/anime, or pokemon cards. These differences, along with the associated image backgrounds of each type of picture, were analyzed. The images and their backgrounds needed to be normalized in order to eliminate the possibility of them affecting the results of our model.
 
 ### Data Preprocessing
 
@@ -134,7 +57,32 @@ Based on our EDA, we carried out data prepocessing to remove "bad data" from our
 
 First, images that were manually pre-labeled as "bad data" were removed from our dataset. Some images in the dataset had formats that were unsupported by PIL that were also removed.
 
+### Figure 2: Examples of 'Bad Data'
+![Bad Data Examples](images/bad_data_examples.png)
+
+*Figure 2: Examples of Pokémon images marked as 'bad data,' which were excluded during preprocessing.*
+
 The remaining images were resized to all have the same pixel dimensions (224 x 224). Then, pixels in each of the images were normalized. Multiple functions were made to use different forms of pixel normalization for different models, such as z-score and min-max normalization. The results of each type of normalization were visualized by plotting 10 examples images for each method. Additionally, a function was created for data augmentation. Functions from the PIL used to implement flip/rotation/shifting changes were condensed into a single function to be used on certain images for training or testing.
+
+### Figure 3: Image Dimensions Before and After Resizing
+![Image Dimensions](images/image_dimensions.png)
+
+*Figure 3: Scatter plots showing image dimensions before and after resizing to 224x224 pixels.*
+
+### Figure 4: Resized Images
+![Resized Images](images/resized_examples.png)
+
+*Figure 4: Examples of Pokémon images after resizing to 224x224 pixels.*
+
+### Figure 5: Normalized Images
+![Normalized Images](images/normalized_images.png)
+
+*Figure 5: Examples of Pokémon images after applying Z-score and Min-Max normalization.*
+
+### Figure 6: Augmented Images
+![Augmented Images](images/augmented_images.png)
+
+*Figure 6: Examples of Pokémon images after applying data augmentation, including rotations, flips, and shifts.*
 
 Finally, methods to manipulate the dataset for use with our models were implemented. Random sampling from both winged and non winged pokemon was decided to be used as the method to resolve the imbalances between the two classes of pokemon. The dataset was also split into training/validation/testing sets with a 80/10/10 split, respectively. All of the data preprocessing and augmentation described above was then applied on the appropriate sets.
 
@@ -191,7 +139,13 @@ The performance of the classification models—Logistic Regression, Support Vect
 - **Observations**:
   - Logistic Regression achieved moderate precision and recall on the training and validation datasets.
   - On the test set, the model struggled with the minority class (winged Pokémon), showing poor precision (17%) and recall (53%).
+ 
+### Figure 7: Confusion Matrices
 
+#### Logistic Regression
+![Logistic Regression Confusion Matrix](results/LogisticRegression/Confusion_Matrix.png)
+
+*Figure 7.1: Confusion matrix for Logistic Regression showing classification performance on test data.*
 
 ### Support Vector Machine (SVM)
 - **Training Accuracy**: 80%
@@ -201,6 +155,11 @@ The performance of the classification models—Logistic Regression, Support Vect
   - SVM demonstrated strong performance on the training and validation datasets, reflecting good generalization.
   - On the test set, its performance was better than Logistic Regression but still struggled with minority class precision (24%) and recall (62%).
 
+#### Support Vector Machine (SVM)
+![SVM Confusion Matrix](results/SVC/Confusion_Matrix.png)
+
+*Figure 7.2: Confusion matrix for Support Vector Machine (SVM) showing classification performance on test data.*
+
 ### Residual Network 18 (ResNet18)
 - **Training Accuracy**: 99%
 - **Validation Accuracy**: 99%
@@ -208,6 +167,11 @@ The performance of the classification models—Logistic Regression, Support Vect
 - **Observations**:
   - ResNet18 outperformed all other models, achieving nearly perfect accuracy across datasets.
   - It excelled at classifying the minority class, with a precision of 93% and recall of 94%, making it the best-suited model for this classification task.
+ 
+#### Residual Network 18 (ResNet18)
+![ResNet18 Confusion Matrix](results/ResNet18/Confusion_Matrix.png)
+
+*Figure 7.3: Confusion matrix for Residual Network 18 (ResNet18) showing classification performance on test data.*
 
 ## Discussion
 
@@ -228,11 +192,44 @@ Also, since the labels were "Winged" and "Not Winged", we made it a numeral valu
 1. **Logistic Regression**:
    We knew that using Logistic Regression would not be a good idea for this usecase because images often have non-linear relations and it also can't adjust for zoom in images, the idea behind doing this was to make sure the initial pre-processing works well and also get a good baseline model. As expected, the model did not perform well, so we had our eyes set on SVC to see how well of an improvement can we get.
 
+#### Logistic Regression
+![Logistic Regression Learning Curve](results/LogisticRegression/Accuracy_Size.png)
+
+*Figure 8.1: Learning curve for Logistic Regression showing training and validation accuracy as a function of training set size.*
+
+![Logistic Regression Hyperparameter Tuning](results/LogisticRegression/Error_Complexity.png)
+
+*Figure 8.2: Error vs. regularization strength for Logistic Regression showing the optimal regularization parameter.*
+
+![Logistic Regression F1-Score Tuning](results/LogisticRegression/F1_Score_Complexity.png)
+
+*Figure 8.3: F1-score vs. regularization strength for Logistic Regression showing the best F1 performance.*
+
 2. **SVM**:
    We again had an idea that SVM wouldn't be the best model to use since it again captures linear-relations, but it would be better that Logistic Regression since using kernel methods would allow us to have non-linear modifications for individual features. The idea was to test the new method we've learned in class and expreiment with how well it works. It did offer a significant improvement over the last method but still fell short on our expectations. So we continued on the next model we wanted to test, the Resnet18
 
-3. **ResNet18**
+
+#### Support Vector Machine (SVM)
+![SVM Learning Curve](results/SVC/Accuracy_Size.png)
+
+*Figure 9.1: Learning curve for Support Vector Machine (SVM) showing training and validation accuracy as a function of training set size.*
+
+![SVM Hyperparameter Tuning](results/SVC/Error_Complexity.png)
+
+*Figure 9.2: Error vs. regularization strength for Support Vector Machine (SVM) highlighting optimal parameters.*
+
+![SVM F1-Score Tuning](results/SVC/F1_Score_Complexity.png)
+
+*Figure 9.3: F1-score vs. regularization strength for SVM showing the best performance.*
+
+4. **ResNet18**
    We knew that Deep Learning would outperform traditional machine learning models in this case as it excels at catching complex relations in images, we chose resnet specifically becuase of the amount of recommendations it had online, and we decided to start with the most basic 18-layer variant of it which delivered excellent results, so we chose it as our final model and didn't contiue to train complex models
+
+#### Residual Network 18 (ResNet18)
+![ResNet18 Learning Curve](results/Resnet18/Loss_Curve.png)
+
+*Figure 10.1: Loss curve for Residual Network 18 showing training and validation loss as a function of epochs.*
+
 
 ### Key ML Learnings from this Project
 1. **Class Imbalance**:
