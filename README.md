@@ -496,6 +496,8 @@ This project effectively demonstrated the application of machine learning techni
 
 - Report Results Section: Contributed significantly to the Results section of the report by adding the results and providing explanations for them.
 
+- General Collaboration: Participated in team discussions and reviewed the report for quality and consistency.
+
 
 
 **Contribution**:
