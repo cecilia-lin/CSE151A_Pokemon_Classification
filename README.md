@@ -483,10 +483,19 @@ This project effectively demonstrated the application of machine learning techni
 - Attended Office Hours with group members to review Final Milestone requirements.
 - Attended group discussions and meetings.
 
-### Name:
+### Name: Franziska Olivia Kuch
 
 
-**Title**:
+**Title**: Writer and Code Commenter
+
+- Added detailed comments to the codebase, making it accessible and easier to understand for external readers and team members. This included explaining complex functions, preprocessing steps, and model evaluation processes.
+
+- Report Writing: Wrote the Conclusion section of the report, summarizing the key findings and providing insights into the project's outcomes and future direction.
+
+- Report Figures Integration: Integrated figures in the markdown report.
+
+- Report Results Section: Contributed significantly to the Results section of the report by adding the results and providing explanations for them.
+
 
 
 **Contribution**:
