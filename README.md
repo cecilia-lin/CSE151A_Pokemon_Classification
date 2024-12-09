@@ -135,7 +135,7 @@ SVM is a supervised learning algorithm used for both classification and regressi
 #### Residual Network 18 (ResNet18)
 
 
-ResNet18 is a neural network architecture that works well with image classification tasks. It's known for its ability to train deep networks and introduce skip connections to allow gradients to flow more effectively throughout its networks. It fits our image classification task well. Two different optimizers, Adam and RMSProp, were extensively tested with different learning rates and weight decays to minimize loss and prevent overfitting.
+ResNet18 is a neural network architecture that works well with image classification tasks. It's known for its ability to train deep networks and introduce skip connections to allow gradients to flow more effectively throughout its networks. It fits our image classification task well. Four different optimizers, Adam, AdamW, AMSGrad, and RMSprop, were extensively tested with different learning rates and weight decays to minimize loss and prevent overfitting.
 
 
 - pretrained('True'): This option pre-trains the model with weights trained on ImageNet, which allows the models to start with generalized visual features, only requiring fine-tuning for our project.
@@ -247,25 +247,21 @@ The performance of the classification models—Logistic Regression, Support Vect
 ### EDA
 
 
-After deciding on our topic and dataset, we first took some time to explore our dataset. At first glance, there seemed to be many instances of "bad" or "incorrectly formatted" data that needed to be manually checked and removed from our dataset. Many Pokémon that are non-winged have wing-like features that would work against training our model. For example, there were certain classes of water-type Pokémon with fins that resemble wings, so we decided to drop them from the dataset. Tricky data such as these types of images could deviate the model from generalizing correctly.
+To begin building models, we first looked into our dataset. The data contained was mostly fine, but there were some instances of bad data that needed to be removed. To process images, we had to make use of the PIL (Python Imaging Library). Some images in our dataset were included in data formats that was unable to be read by the PIL. We decided it would be beneficial to get rid of any unsupported file types as there were very few of them. All of these types of images were manually checked, marked, and removed from the dataset.
+
+Additionally, many Pokémon that are non-winged have wing-like features that would work against training our model. For example, there were certain classes of water-type Pokémon with fins that resemble wings, so we decided to drop them from the dataset. Tricky data like this could cause the model to learn inefficiently, and we wanted to have a more clear distinction between the two classes. We manually removed any instances of data as well. Once the dataset was parsed of inaccurate data, we considered several factors discovered regarding the remaining images.
 
 
-To process images, we had to make use of the PIL (Python Imaging Library). Some images were included in data formats that was unable to be read by PIL (Python Imaging Library). We decided it would be beneficial to get rid of any unsupported file types as there were very few of them. All of these types of images were manually checked, marked, and removed from the dataset.
+- Winged/Non-Winged: Because we found that we had unbalanced datsets, we would either have to sample an equal number of images from both sets or use a weight balance optimizer to accommodate for this imbalance. We decided to develop a function with data augmentation that oversample and split the train/test sets accordingly to deal with this issue. Some models that we used are also able to handle unbalanced classes. 
 
 
-Once the dataset was parsed of inaccurate data, we considered several factors discovered regarding the remaining images.
+- Image Dimensions: Some images had different sizes, so we had to get them all to the same size to use them as an input to our models. Some images were fairly huge in size, even as big as 1024x1024, so we ultimately decided to resize the images.
 
 
-- Winged/Non-Winged: We first graphed the frequency of each of the two classes. Results showed that there were many more examples of non-winged than winged Pokémon. We would either have to sample an equal number of images from both sets or use a weight balance optimizer to accommodate for this imbalance. We developed a function that would randomly sample data from each class, and models that we used also implement auto-balancing image frequency per class.
+- Color: Initially, we believed that grayscaling the images would simplify inputs for our models. However, we later learned that having colors in our images does matter after discussing our project with TAs during Office Hours. Instead, we looked into different methods of normalizing pixel data, such as min-max and z-score normalization.
 
 
-- Image Dimensions: Our images were of various dimensions, so these needed to be resized and standardized to be used with our model. A scatter plot of image dimensions was created before re-sizing.
-
-
-- Color: Initially, we believed that grayscaling the images would simplify inputs for our models. However, we later learned that having colors in our images does matter after discussing our project with TAs during Office Hours. Instead, we looked into different methods of normalizing pixel data.
-
-
-- Background/type diversity: When looking at different images of the same Pokémon, it is clear that different images come from different sources, for example 3D rendering, plushies, cartoon/anime, or Pokémon cards. These differences, along with the associated image backgrounds of each type of picture, were analyzed. The images and their backgrounds needed to be normalized in order to eliminate the possibility of them affecting the results of our model.
+- Background/type diversity: For each Pokémon in our dataset, we found that the images were sources from various differnt medias, for example 3D rendering, plushies, cartoon/anime, or Pokémon cards. Although the Pokémon may look the same regardless of what source they're imaged from, we found that their backgrounds can be much different. We theorized that this could affect our model and that we should remove the inconsistencies in the background in order to produce more accurate results. We decided to normalize the images and their backgrounds in order to eliminate the possibility of them affecting the results of our model.
 
 
 ### Data Preprocessing
@@ -274,10 +270,10 @@ Once the dataset was parsed of inaccurate data, we considered several factors di
 First, images that were manually pre-labeled as "bad data" were removed from our dataset. Some images in the dataset had formats that were unsupported by PIL that were also removed. These particular examples showcase non-winged Pokémon that have "wing-like" qualities. After some discussion, we decided to remove these types of images from the dataset. These outliers would make it too hard for our models to accurately train on our dataset.
 
 
-Additionally, some images had different sizes, so we had to get them all to the same size to use them as an input to our models. Some images were fairly huge in size, even as big as 1024x1024, and so we decided to resize the images to 224x224. This number was chosen in advance with future models like ResNet in mind, as an image size of 224x224 is the input size for ResNet.
+Regarding the images themselves, we decided to resize all images to 224x224. This number was chosen to reduce the size of most images and lessen the input data for our models. This decision was also made with future models like ResNet in mind, as an image size of 224x224 is the input size for ResNet.
 
 
-Then, pixels in each of the images were normalized. We made multiple functions to use different forms of pixel normalization for different models, such as z-score and min-max normalization. We visualized the results of each type of normalization and decided on the best method for each of our models.
+Then, we normalized the images and their backgrounds. We made multiple functions to use different forms of pixel normalization for different models, such as z-score and min-max normalization. We visualized the results of each type of normalization and decided on the best method for each of our models. Discussing these results together allowed us to isolate the Pokémon from their backgrounds and simplify training for our models.
 
 
 Finally, methods to manipulate the dataset for use with our models were implemented. We saw that there was an imbalance between the frequency of non-winged and winged Pokémon, so we wrote a function to handle data augmentation for models that couldn't directly handle unbalanced data, namely the LR and SVM models. For the training/validation/testing sets, we first split 10% as testing data. Since the dataset is unbalanced, we decided to oversample the remaining data through data augmentation and split the augmented data into 80/20 training/validation sets. This allowed us to get accurate results with our traditional machine learning models. ResNet, however, can handle unbalanced sets on its own, so no data augmentation was needed for the model. ResNet featured a more standard 80/10/10 train/test/validation split.
@@ -487,5 +483,20 @@ This project effectively demonstrated the application of machine learning techni
 - Attended Office Hours with group members to review Final Milestone requirements.
 - Attended group discussions and meetings.
 
+### Name:
+
+
+**Title**:
+
+
+**Contribution**:
+
+### Name:
+
+
+**Title**:
+
+
+**Contribution**:
 
 ChatGPT:https://docs.google.com/document/d/1uZLX1wxNKX3_IAx7YvsYM7n8N7J13PedCZ3WOxa7LGM/edit?usp=sharing 
