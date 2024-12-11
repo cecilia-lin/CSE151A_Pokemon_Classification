@@ -488,6 +488,10 @@ This project effectively demonstrated the application of machine learning techni
 
 **Title**: Writer and Code Commenter
 
+
+**Contribution**:
+
+
 - Added detailed comments to the codebase, making it accessible and easier to understand for external readers and team members. This included explaining complex functions, preprocessing steps, and model evaluation processes.
 
 - Report Writing: Wrote the Conclusion section of the report, summarizing key findings and providing insights into the project's outcomes and future direction.
@@ -499,15 +503,16 @@ This project effectively demonstrated the application of machine learning techni
 - General Collaboration: Participated in team discussions and reviewed the report for quality and consistency.
 
 
-
-**Contribution**:
-
-### Name:
+### Name: Vincent Tu
 
 
-**Title**:
+**Title**: Code Commenter
 
 
 **Contribution**:
+
+
+## ChatGPT
+
 
 ChatGPT:https://docs.google.com/document/d/1uZLX1wxNKX3_IAx7YvsYM7n8N7J13PedCZ3WOxa7LGM/edit?usp=sharing 
