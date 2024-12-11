@@ -1,4 +1,14 @@
-# CSE151A Pokémon Classification Report
+# 🦜 CSE151A Pokémon Classification Report
+
+## Table of Contents
+
+- [Introduction](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#introduction)
+- [Methods](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#methods)
+- [Results](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#results)
+- [Discussion](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#discussion)
+- [Conclusion](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#conclusion)
+- [Statement of Collaboration](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#statement-of-collaboration)
+- [ChatGPT Usage](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#chatgpt)
 
 
 ## Introduction
@@ -48,7 +58,7 @@ After deciding on our topic and dataset, we took some time to explore our datase
 ### Data Preprocessing
 
 
-First, images that were manually pre-labeled as "bad data" were removed from our dataset. Some images in the dataset had formats that were unsupported by PIL and were also removed. Examples of such "bad data" are included in Figure 5 below. These particular examples showcase non-winged Pokémon that have "wing-like" qualities. After some discussion, we decided to remove these types of images from the dataset.
+First, images that were manually pre-labeled as "bad data" were removed from our dataset. Some images in the dataset had formats that were unsupported by the Python Image Library (PIL) and were also removed. Examples of such "bad data" are included in Figure 5 below. These particular examples showcase non-winged Pokémon that have "wing-like" qualities. After some discussion, we decided to remove these types of images from the dataset.
 
 
 ![Bad Data Examples](images/bad_data_examples.png)
@@ -78,7 +88,7 @@ Then, pixels in each of the images were normalized. Multiple functions were made
 <br />
 
 
-Additionally, a function was created for data augmentation. Functions from the PIL used to implement flip/rotation/shifting changes were condensed into a single function to be used on certain images for oversampling.
+Additionally, a function was created for data augmentation. Functions from the `PIL` used to implement flip/rotation/shifting changes were condensed into a single function to be used on certain images for oversampling. Data augmentation for computer vision is a powerful set of techniques aimed at improving the model's robustness and generalizability. As our Pokémon dataset consists of many different backgrounds and contexts, data augmentation would not only introduce variations our CNNs can generalize across, but also more valuable data.
 
 
 ![Augmented Images](images/augmented_images.png)
@@ -88,7 +98,7 @@ Additionally, a function was created for data augmentation. Functions from the P
 <br />
 
 
-Finally, methods to manipulate the dataset for use with our models were implemented. Random sampling from both winged and non-winged Pokémon was decided to be used as the method to resolve the imbalances between the two classes of Pokémon. The dataset was also split into training/validation/testing sets with a 10% test split and an 80/20 training/validation split. We wanted to serialize our two classes, "winged" and "non-winged", so we gave each class a numerical classification, with 0 being "non-winged" and 1 being "winged". All of the data preprocessing and augmentation described above was then applied to the dataset for the appropriate models.
+Finally, methods to manipulate the dataset for use with our models were implemented. To resolve the class imbalance between winged/non-winged (our two labels) Pokémon, we resorted to a simple random sampling. The dataset was also split into training/validation/testing sets with a 10% test split and an 80/20 training/validation split. To serialize our two classes, "winged" and "non-winged", so we gave each class a numerical classification, with 0 being "non-winged" and 1 being "winged". All of the data preprocessing and augmentation described above was then applied to the dataset for the appropriate models.
 
 
 ### Models
@@ -100,21 +110,19 @@ Finally, methods to manipulate the dataset for use with our models were implemen
 The first model we decided to use was Logistic Regression. Logistic Regression is a supervised learning algorithm used for binary classification. Since Logistic Regression takes 1-dimensional inputs, the image data was flattened into a 1D vector in order to fit into our model.
 
 
-- solver('lbfgs'): This solving algorithm can handle large datasets and is the default sorting algorithm, which ended up being our choice as well.
+- `solver('lbfgs')`: This solving algorithm can handle large datasets and is the default sorting algorithm, which ended up being our choice as well.
 
 
-- penalty('l2'): Our solving algorithm supports only L2 regularization or none. An L2 regulation was added to prevent overfitting and promote simpler models.
+- `penalty('l2')`: Our solving algorithm supports only L2 regularization or none. An L2 regulation was added to prevent overfitting and promote simpler models.
 
 
+- `class_weight('balanced')`: Even though the input data for this model is randomly sampled and balanced during preprocessing, the 'balanced' option is chosen to automatically balance the weights of each class frequency.
 
 
-- class_weight('balanced'): Even though the input data for this model is randomly sampled and balanced during preprocessing, the 'balanced' option is chosen to automatically balance the weights of each class frequency.
+- `C('best_C')`: From testing, the best regularization is evaluated, and the best regularization complexity is chosen and added as a parameter into the model.
 
 
-- C('best_C'): From testing, the best regularization is evaluated, and the best regularization complexity is chosen and added as a parameter into the model.
-
-
-#### SVM (Support Vector Machine)
+#### Support Vector Machine (SVM)
 
 
 SVM is a supervised learning algorithm used for both classification and regression, though we use it in this project for regression. SVM works by finding the optimal decision boundary (hyperplane) between two classes in a feature space. This type of classification is effective for classification tasks like ours with high-dimensional spaces and noisy data.
@@ -132,25 +140,25 @@ SVM is a supervised learning algorithm used for both classification and regressi
 - class_weight('balanced'): Even though the input data for this model is randomly sampled and balanced during preprocessing, the 'balanced' option is chosen to automatically balance the weights of each class frequency.
 
 
-#### Residual Network 18 (ResNet18)
+#### Residual Network-18 (ResNet-18)
 
 
-ResNet18 is a neural network architecture that works well with image classification tasks. It's known for its ability to train deep networks and introduce skip connections to allow gradients to flow more effectively throughout its networks. It fits our image classification task well. Four different optimizers, Adam, AdamW, AMSGrad, and RMSprop, were extensively tested with different learning rates and weight decays to minimize loss and prevent overfitting.
+Convolutional Neural Networks (CNNs) — networks suited to learn kernels/filters on image data using the "convolution" layer — capture spatial information (notably from images) better than dense neural networks. Of this broad family of neural network architectures, Residual Networks (ResNets) — deep CNNs consisting of residual connections, allowing for better gradient flow — were popularized by their evidently strong performance in image tasks (2015). Because of their battle-tested performance, we opt to use ResNets, specifically ResNet-18 (18 convolutional layers) for our binary image classification task. Four different optimizers, Adam, AdamW, AMSGrad, and RMSprop, were extensively tested with different learning rates and weight decays to minimize loss and prevent overfitting.
 
 
-- pretrained('True'): This option pre-trains the model with weights trained on ImageNet, which allows the models to start with generalized visual features, only requiring fine-tuning for our project.
+- `pretrained('True')`: This option pre-trains the model with weights trained on ImageNet, which allows the models to start with generalized visual features, only requiring fine-tuning for our project.
 
 
-- lr(various): Various learning rates were tested to optimize training speed and overshooting to fit the best with our project.
+- `lr(various)`: Various learning rates were tested to optimize training speed and overshooting to fit the best with our project.
 
 
-- wd(various): Various weight decays were tested to reduce overfitting to fit the best with our project.
+- `wd(various)`: Various weight decays were tested to reduce overfitting to fit the best with our project.
 
 
 ## Results
 
 
-The performance of the classification models—Logistic Regression, Support Vector Machine (SVM), and Residual Network 18 (ResNet18)—was evaluated using precision, recall, f1-score, and accuracy on the training, validation, and test datasets. Below are the results:
+We evaluated the performance of our selected classification models — Logistic Regression, Support Vector Machine (SVM), and Residual Network-18 (ResNet-18) — with precision, recall, f1-score, and accuracy on the training, validation, and test datasets. We highlight our results below.
 
 
 ### Logistic Regression
@@ -247,9 +255,9 @@ The performance of the classification models—Logistic Regression, Support Vect
 ### EDA
 
 
-To begin building models, we first looked into our dataset. The data contained was mostly fine, but there were some instances of bad data that needed to be removed. To process images, we had to make use of the PIL (Python Imaging Library). Some images in our dataset were included in data formats that was unable to be read by the PIL. We decided it would be beneficial to get rid of any unsupported file types as there were very few of them. All of these types of images were manually checked, marked, and removed from the dataset.
+To begin building models, we first looked into our dataset. The data contained was mostly fine, but there were some instances of bad data that needed to be removed. To process images, we had to make use of  `PIL`. Some images in our dataset were included in data formats that was unable to be read by the `PIL`. We decided it would be beneficial to get rid of any unsupported file types as there were very few of them. All of these types of images were manually checked, marked, and removed from the dataset.
 
-Additionally, many Pokémon that are non-winged have wing-like features that would work against training our model. For example, there were certain classes of water-type Pokémon with fins that resemble wings, so we decided to drop them from the dataset. Tricky data like this could cause the model to learn inefficiently, and we wanted to have a more clear distinction between the two classes. We manually removed any instances of data as well. Once the dataset was parsed of inaccurate data, we considered several factors discovered regarding the remaining images.
+Additionally, many non-winged Pokémon have wing-like features that would work against training our model. For example, there were certain classes of water-type Pokémon with fins that resemble wings, so we decided to drop them from the dataset. Tricky data like this could cause the model to learn inefficiently, and we wanted to have a more clear distinction between the two classes. We manually removed any instances of data as well. Once the dataset was parsed of inaccurate data, we considered several attributes of the remaining images.
 
 
 - Winged/Non-Winged: Because we found that we had unbalanced datsets, we would either have to sample an equal number of images from both sets or use a weight balance optimizer to accommodate for this imbalance. We decided to develop a function with data augmentation that oversample and split the train/test sets accordingly to deal with this issue. Some models that we used are also able to handle unbalanced classes. 
@@ -285,7 +293,7 @@ Finally, methods to manipulate the dataset for use with our models were implemen
 #### 1. Logistic Regression
 
 
-We knew that using Logistic Regression would not be a good idea for this use case because images often have non-linear relations and it also can't adjust for zoom in images, the idea behind doing this was to make sure the initial pre-processing works well and also get a good baseline model. To get started, we first looked into finding the best parameters for Logistic Regression. We wanted to be aggressive on regularization and parameter hypertuning to prevent overfitting and obtain the best results, so we decided to test a range of training set sizes and regularization strength, such as the parameter "C". The results are outlined in the following figures.
+Logistic Regression is not suitable for an image classification task, especially one with this much variation in training data (different Pokémon and different backgrounds). Logistic Regression fails to account for spatial relations in images, color, depth, and many more other attributes crucial for making accurate predictions. However, it would serve as a necessary baseline for our future models. We performed a hyperparameter sweep, focusing on regularization and prevent overfitting to obtain the best/most generalizable model, so we decided to test a range of training set sizes and regularization strength, such as the parameter `"C"`. The results are outlined in the following figures.
 
 
 ![Logistic Regression Learning Curve](results/LogisticRegression/Accuracy_Size.png)
@@ -349,7 +357,7 @@ We chose ResNet specifically because of the number of recommendations it had onl
 ![ResNet18 Learning Curve](results/Resnet18/Loss_Curve.png)
 
 
-*Figure 12.1: Training and testing loss curve for ResNet18*
+*Figure 12.1: Training and testing loss curve for ResNet18.*
 <br />
 
 
@@ -382,13 +390,15 @@ We chose ResNet specifically because of the number of recommendations it had onl
 ## Conclusion
 
 
-ResNet18 was the best-performing model, achieving a test accuracy of 98% and excelling at classifying both majority and minority classes. This highlights the superiority of deep learning for image classification tasks with complex visual features. Future work could focus on fine-tuning ResNet18’s hyperparameters, exploring ensemble techniques, or expanding the dataset to include a broader range of Pokémon species for improved generalization.
-
+ResNet18 was the best-performing model, achieving a test accuracy of 98% and excelling at classifying both majority and minority classes. This highlights the superiority of deep learning for image classification tasks with complex visual features. Future work could focus on tweaking ResNet18’s hyperparameters, exploring ensemble techniques, or expanding the dataset to include a broader range of Pokémon species for improved generalization. Future directions can also entail using more powerful vision models like Vision Transformers (ViTs) or variants of ViTs. 
 
 Additionally, expanding the dataset to include more Pokémon species could address class imbalance and improve generalization. Incorporating strategies to better handle class imbalance, such as refined sampling methods or targeted augmentation, might also enhance the model's ability to classify the minority class accurately.
 
+Another promising avenue for future work involves leveraging transfer learning from models pre-trained on larger and more diverse datasets, such as ImageNet. This approach could further enhance ResNet18’s performance by providing a richer set of learned features, especially for underrepresented classes in the Pokémon dataset. Additionally, experimenting with generative models like GANs (Generative Adversarial Networks) to synthesize new Pokémon images could help augment the dataset and mitigate class imbalance. Exploring semi-supervised or self-supervised learning approaches could also be beneficial, enabling the model to leverage unlabelled data more effectively. Finally, integrating advanced interpretability techniques could provide insights into the decision-making process of the model, fostering trust and identifying potential areas for improvement.
 
-This project effectively demonstrated the application of machine learning techniques to a creative and complex classification task. Starting with simpler models and progressing to a deep learning approach like ResNet18 provided a thorough exploration of image classification challenges. The results showcase the potential of these methods to address real-world problems, offering a strong basis for future work in image-based predictive modeling.
+Despite its strong performance, the study has limitations that warrant further exploration. The dataset's class imbalance posed challenges, particularly for underrepresented Pokémon species, potentially limiting the model's ability to generalize effectively. Additionally, the reliance on a single architecture, ResNet18, while effective, leaves room for exploring alternative models or ensembles that might capture nuanced visual features more robustly. Lastly, the relatively narrow scope of the dataset limits the applicability of the findings to broader or more diverse image classification tasks. Addressing these limitations could significantly enhance the model's robustness and versatility.
+
+In all, this project effectively demonstrated the application of machine learning techniques on a creative and complex classification task. Starting with simpler models and progressing to a deep learning approach like ResNet18 provided a thorough exploration of image classification challenges. The results showcase the potential of these methods to address real-world problems, offering a strong basis for future work in image-based predictive modeling.
 
 
 ## Statement of Collaboration
@@ -506,13 +516,16 @@ This project effectively demonstrated the application of machine learning techni
 ### Name: Vincent Tu
 
 
-**Title**: Code Commenter
+**Title**: Writer & Code Commenter
 
 
 **Contribution**:
 
+- Code commenting and documentation: Added type hints, docstrings, explanations of code to the ML pipeline (preprocessing, augmentation, modeling, training, etc) improve code readability and ease-of-use. 
+- Report Writing: Wrote the introduction and revised the final report, improving sentence/paragraph structures and readability. Added supplementary information in all steps of our ML pipeline. Added section in Conclusion for future work and limitations. Added table of contents and organized sections.
 
-## ChatGPT
+
+## ChatGPT Usage
 
 
-ChatGPT:https://docs.google.com/document/d/1uZLX1wxNKX3_IAx7YvsYM7n8N7J13PedCZ3WOxa7LGM/edit?usp=sharing 
+ChatGPT: https://docs.google.com/document/d/1uZLX1wxNKX3_IAx7YvsYM7n8N7J13PedCZ3WOxa7LGM/edit?usp=sharing 
