@@ -2,13 +2,19 @@
 
 ## 📋 Table of Contents
 
-- [Introduction](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#introduction)
-- [Methods](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#methods)
-- [Results](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#results)
-- [Discussion](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#discussion)
-- [Conclusion](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#conclusion)
-- [Statement of Collaboration](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#statement-of-collaboration)
-- [ChatGPT Usage](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#chatgpt)
+- [Introduction](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-introduction)
+- [Methods](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-methods)
+   - [EDA Results](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#eda-results)
+   - [Data Preprocessing](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#data-preprocessing)
+   - [Models](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#models)
+- [Results](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-results)
+   - [Logistic Regression](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#logistic-regression)
+   - [Support Vector Machine (SVM)](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#support-vector-machine-svm)
+   - [Residual Network 18 (ResNet18)](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#residual-network-18-resnet-18)
+- [Discussion](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-discussion)
+- [Conclusion](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-conclusion)
+- [Statement of Collaboration](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-statement-of-collaboration)
+- [ChatGPT Usage](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-chatgpt-usage)
 
 
 ## 🌟 Introduction
@@ -23,7 +29,7 @@ We chose this project because it combines technical rigor with creativity, makin
 The broader impact of a strong predictive model extends far beyond Pokémon. Image classification powers technologies in fields such as healthcare, autonomous vehicles, and e-commerce, where precise visual understanding drives critical decisions. By applying machine learning techniques to this imaginative dataset, we demonstrate how predictive models can be both impactful and accessible, inspiring further innovation in computer vision.
 
 
-## Methods
+## 🔨 Methods
 
 
 ### EDA Results
@@ -155,7 +161,7 @@ Convolutional Neural Networks (CNNs) — networks suited to learn kernels/filter
 - `wd(various)`: Various weight decays were tested to reduce overfitting to fit the best with our project.
 
 
-## Results
+## 📊 Results
 
 
 We evaluated the performance of our selected classification models — Logistic Regression, Support Vector Machine (SVM), and Residual Network-18 (ResNet-18) — with precision, recall, f1-score, and accuracy on the training, validation, and test datasets. We highlight our results below.
@@ -249,7 +255,7 @@ We evaluated the performance of our selected classification models — Logistic 
 <br />
 
 
-## Discussion
+## 💭 Discussion
 
 
 ### EDA
@@ -387,7 +393,7 @@ We chose ResNet specifically because of the number of recommendations it had onl
    - Except for ResNet18, all models faced significant challenges in accurately classifying the minority class (winged Pokémon), as reflected in low recall and precision values.
 
 
-## Conclusion
+## 👋 Conclusion
 
 
 ResNet18 was the best-performing model, achieving a test accuracy of 98% and excelling at classifying both majority and minority classes. This highlights the superiority of deep learning for image classification tasks with complex visual features. Future work could focus on tweaking ResNet18’s hyperparameters, exploring ensemble techniques, or expanding the dataset to include a broader range of Pokémon species for improved generalization. Future directions can also entail using more powerful vision models like Vision Transformers (ViTs) or variants of ViTs. 
@@ -401,7 +407,7 @@ Despite its strong performance, the study has limitations that warrant further e
 In all, this project effectively demonstrated the application of machine learning techniques on a creative and complex classification task. Starting with simpler models and progressing to a deep learning approach like ResNet18 provided a thorough exploration of image classification challenges. The results showcase the potential of these methods to address real-world problems, offering a strong basis for future work in image-based predictive modeling.
 
 
-## Statement of Collaboration
+## 🥧 Statement of Collaboration
 
 
 ### Name: Ayush Singh
@@ -525,7 +531,7 @@ In all, this project effectively demonstrated the application of machine learnin
 - Report Writing: Wrote the introduction and revised the final report, improving sentence/paragraph structures and readability. Added supplementary information in all steps of our ML pipeline. Added section in Conclusion for future work and limitations. Added table of contents and organized sections.
 
 
-## ChatGPT Usage
+## 🤖 ChatGPT Usage
 
 
 ChatGPT: https://docs.google.com/document/d/1uZLX1wxNKX3_IAx7YvsYM7n8N7J13PedCZ3WOxa7LGM/edit?usp=sharing 
