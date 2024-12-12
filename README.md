@@ -1,6 +1,6 @@
 # 🦜 CSE151A Pokémon Classification Report
 
-## Table of Contents
+## 📋 Table of Contents
 
 - [Introduction](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#introduction)
 - [Methods](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#methods)
@@ -11,7 +11,7 @@
 - [ChatGPT Usage](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#chatgpt)
 
 
-## Introduction
+## 🌟 Introduction
 
 
 In the modern era, where visual data dominates many aspects of technology, image classification has become a cornerstone of machine learning applications. This project focuses on the supervised classification of Pokémon characters as winged or wingless, using Kaggle's "7,000 Labeled Pokémon" dataset. This dataset, containing 150 Pokémon species with 30–45 images each, provides a fun and engaging platform to explore real-world challenges in image-based predictive modeling.
