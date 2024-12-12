@@ -1,5 +1,12 @@
 # 🦜 CSE151A Pokémon Classification Report
 
+[![Pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&labelColor=150458)](https://pandas.pydata.org/pandas-docs/stable/)
+[![NumPy](https://img.shields.io/badge/NumPy-013243?logo=numpy&labelColor=013243)](https://numpy.org/)
+[![Scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn&labelColor=3394c8)](https://scikit-learn.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&labelColor=fcfcfc)](https://pytorch.org/)
+[![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?logo=kaggle&labelColor=fcfcfc)](https://www.kaggle.com/)
+
+
 ## 📋 Table of Contents
 
 - [Introduction](https://github.com/cecilia-lin/CSE151A_Pokemon_Classification/tree/main#-introduction)
