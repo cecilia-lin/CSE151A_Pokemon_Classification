@@ -1,5 +1,11 @@
 ![Banner](images/banner.png)
 
+<div align="center">
+   <em>Powering the Pokédex since 1996.</em>
+</div>
+
+<br>
+
 # 🦜 CSE151A Pokémon Classification Report
 
 [![Pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&labelColor=150458)](https://pandas.pydata.org/pandas-docs/stable/)
