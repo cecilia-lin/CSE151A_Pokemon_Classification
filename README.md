@@ -1,3 +1,5 @@
+![Banner](images/banner.png)
+
 # 🦜 CSE151A Pokémon Classification Report
 
 [![Pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&labelColor=150458)](https://pandas.pydata.org/pandas-docs/stable/)
